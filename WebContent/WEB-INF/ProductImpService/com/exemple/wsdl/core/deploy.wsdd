@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ProductImpService WSDL service -->
+
+  <service name="ProductImp" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://core.wsdl.exemple.com"/>
+      <parameter name="wsdlServiceElement" value="ProductImpService"/>
+      <parameter name="schemaQualified" value="http://domain.exemple.com,http://core.wsdl.exemple.com,http://domain.core.wsdl.exemple.com"/>
+      <parameter name="wsdlServicePort" value="ProductImp"/>
+      <parameter name="className" value="com.exemple.wsdl.core.ProductImp"/>
+      <parameter name="wsdlPortType" value="ProductImp"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://core.wsdl.exemple.com" xmlns:retNS="http://core.wsdl.exemple.com" xmlns:rtns="http://domain.exemple.com" name="getProducts" qname="operNS:getProducts" returnQName="retNS:getProductsReturn" returnType="rtns:Product" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://core.wsdl.exemple.com" xmlns:retNS="http://core.wsdl.exemple.com" xmlns:rtns="http://domain.exemple.com" name="getProduct" qname="operNS:getProduct" returnQName="retNS:getProductReturn" returnType="rtns:Product" soapAction="">
+        <parameter xmlns:pns="http://core.wsdl.exemple.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:long"/>
+      </operation>
+      <operation xmlns:operNS="http://core.wsdl.exemple.com" xmlns:retNS="http://core.wsdl.exemple.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="removeProduct" qname="operNS:removeProduct" returnQName="retNS:removeProductReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://core.wsdl.exemple.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:long"/>
+      </operation>
+      <operation xmlns:operNS="http://core.wsdl.exemple.com" xmlns:retNS="http://core.wsdl.exemple.com" xmlns:rtns="http://domain.exemple.com" name="addProduct" qname="operNS:addProduct" returnQName="retNS:addProductReturn" returnType="rtns:Product" soapAction="">
+        <parameter xmlns:pns="http://core.wsdl.exemple.com" xmlns:tns="http://domain.core.wsdl.exemple.com" qname="pns:productInput" type="tns:ProductInput"/>
+      </operation>
+      <operation xmlns:operNS="http://core.wsdl.exemple.com" xmlns:retNS="http://core.wsdl.exemple.com" xmlns:rtns="http://domain.exemple.com" name="updateProduct" qname="operNS:updateProduct" returnQName="retNS:updateProductReturn" returnType="rtns:Product" soapAction="">
+        <parameter xmlns:pns="http://core.wsdl.exemple.com" xmlns:tns="http://domain.exemple.com" qname="pns:product" type="tns:Product"/>
+      </operation>
+      <parameter name="allowedMethods" value="getProduct removeProduct addProduct updateProduct getProducts"/>
+
+      <typeMapping xmlns:ns="http://domain.core.wsdl.exemple.com" qname="ns:ProductInput" type="java:com.exemple.wsdl.core.domain.ProductInput" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.exemple.com" qname="ns:Product" type="java:com.exemple.domain.Product" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

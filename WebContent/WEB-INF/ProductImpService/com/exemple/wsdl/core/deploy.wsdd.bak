@@ -1,0 +1,56 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ProductImpService WSDL service -->
+
+  <service name="ProductImp" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://core.wsdl.exemple.com"/>
+      <parameter name="wsdlServiceElement" value="ProductImpService"/>
+      <parameter name="schemaQualified" value="http://domain.exemple.com,http://core.wsdl.exemple.com,http://domain.core.wsdl.exemple.com"/>
+      <parameter name="wsdlServicePort" value="ProductImp"/>
+      <parameter name="className" value="com.exemple.wsdl.core.ProductImpSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ProductImp"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getProducts" qname="operNS:getProducts" xmlns:operNS="http://core.wsdl.exemple.com" returnQName="retNS:getProductsReturn" xmlns:retNS="http://core.wsdl.exemple.com" returnType="rtns:Product" xmlns:rtns="http://domain.exemple.com" soapAction="" >
+      </operation>
+      <operation name="getProduct" qname="operNS:getProduct" xmlns:operNS="http://core.wsdl.exemple.com" returnQName="retNS:getProductReturn" xmlns:retNS="http://core.wsdl.exemple.com" returnType="rtns:Product" xmlns:rtns="http://domain.exemple.com" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://core.wsdl.exemple.com" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="removeProduct" qname="operNS:removeProduct" xmlns:operNS="http://core.wsdl.exemple.com" returnQName="retNS:removeProductReturn" xmlns:retNS="http://core.wsdl.exemple.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://core.wsdl.exemple.com" type="tns:long" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addProduct" qname="operNS:addProduct" xmlns:operNS="http://core.wsdl.exemple.com" returnQName="retNS:addProductReturn" xmlns:retNS="http://core.wsdl.exemple.com" returnType="rtns:Product" xmlns:rtns="http://domain.exemple.com" soapAction="" >
+        <parameter qname="pns:productInput" xmlns:pns="http://core.wsdl.exemple.com" type="tns:ProductInput" xmlns:tns="http://domain.core.wsdl.exemple.com"/>
+      </operation>
+      <operation name="updateProduct" qname="operNS:updateProduct" xmlns:operNS="http://core.wsdl.exemple.com" returnQName="retNS:updateProductReturn" xmlns:retNS="http://core.wsdl.exemple.com" returnType="rtns:Product" xmlns:rtns="http://domain.exemple.com" soapAction="" >
+        <parameter qname="pns:product" xmlns:pns="http://core.wsdl.exemple.com" type="tns:Product" xmlns:tns="http://domain.exemple.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="getProduct removeProduct addProduct updateProduct getProducts"/>
+
+      <typeMapping
+        xmlns:ns="http://domain.core.wsdl.exemple.com"
+        qname="ns:ProductInput"
+        type="java:com.exemple.wsdl.core.domain.ProductInput"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://domain.exemple.com"
+        qname="ns:Product"
+        type="java:com.exemple.domain.Product"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://core.wsdl.exemple.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://core.wsdl.exemple.com" xmlns:intf="http://core.wsdl.exemple.com" xmlns:tns1="http://domain.exemple.com" xmlns:tns2="http://domain.core.wsdl.exemple.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://core.wsdl.exemple.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://domain.core.wsdl.exemple.com"/>
+   <import namespace="http://domain.exemple.com"/>
+   <element name="getProducts">
+    <complexType/>
+   </element>
+   <element name="getProductsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getProductsReturn" type="tns1:Product"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getProduct">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getProductResponse">
+    <complexType>
+     <sequence>
+      <element name="getProductReturn" type="tns1:Product"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeProduct">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeProductResponse">
+    <complexType>
+     <sequence>
+      <element name="removeProductReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addProduct">
+    <complexType>
+     <sequence>
+      <element name="productInput" type="tns2:ProductInput"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addProductResponse">
+    <complexType>
+     <sequence>
+      <element name="addProductReturn" type="tns1:Product"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateProduct">
+    <complexType>
+     <sequence>
+      <element name="product" type="tns1:Product"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateProductResponse">
+    <complexType>
+     <sequence>
+      <element name="updateProductReturn" type="tns1:Product"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://domain.exemple.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://domain.core.wsdl.exemple.com"/>
+   <complexType name="Product">
+    <sequence>
+     <element name="dateCreated" nillable="true" type="xsd:string"/>
+     <element name="dateUpdate" nillable="true" type="xsd:string"/>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:long"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://domain.core.wsdl.exemple.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://domain.exemple.com"/>
+   <complexType name="ProductInput">
+    <sequence>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getProductsRequest">
+
+      <wsdl:part element="impl:getProducts" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeProductRequest">
+
+      <wsdl:part element="impl:removeProduct" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProductResponse">
+
+      <wsdl:part element="impl:getProductResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateProductResponse">
+
+      <wsdl:part element="impl:updateProductResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateProductRequest">
+
+      <wsdl:part element="impl:updateProduct" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addProductRequest">
+
+      <wsdl:part element="impl:addProduct" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProductsResponse">
+
+      <wsdl:part element="impl:getProductsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProductRequest">
+
+      <wsdl:part element="impl:getProduct" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeProductResponse">
+
+      <wsdl:part element="impl:removeProductResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addProductResponse">
+
+      <wsdl:part element="impl:addProductResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ProductImp">
+
+      <wsdl:operation name="getProducts">
+
+         <wsdl:input message="impl:getProductsRequest" name="getProductsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getProductsResponse" name="getProductsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProduct">
+
+         <wsdl:input message="impl:getProductRequest" name="getProductRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getProductResponse" name="getProductResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="removeProduct">
+
+         <wsdl:input message="impl:removeProductRequest" name="removeProductRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:removeProductResponse" name="removeProductResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addProduct">
+
+         <wsdl:input message="impl:addProductRequest" name="addProductRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addProductResponse" name="addProductResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateProduct">
+
+         <wsdl:input message="impl:updateProductRequest" name="updateProductRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateProductResponse" name="updateProductResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ProductImpSoapBinding" type="impl:ProductImp">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getProducts">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getProductsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProductsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getProduct">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getProductRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProductResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="removeProduct">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="removeProductRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="removeProductResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addProduct">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addProductRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addProductResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateProduct">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateProductRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateProductResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ProductImpService">
+
+      <wsdl:port binding="impl:ProductImpSoapBinding" name="ProductImp">
+
+         <wsdlsoap:address location="http://localhost:8080/WebServiceSOAP/services/ProductImp"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
