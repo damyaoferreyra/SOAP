@@ -23,3 +23,5 @@ Selecione a classe que implenta a interface e no menu do botão direiro, escolha
 obs.: será criado uma pasta WebContent > wsdl e dentro terá o arquivo de configuração wsdl. No final do arquivo, podemos encontrar a url para acessar o serviço.
 
 No ex. temos: http://localhost:8080/WebServiceSOAP/services/HelloImp.  basta colocar ?wsdl no final da url.
+
+Usei o SOAPUI para testar o serviço: import na pasta soap_import.
