@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="f6084ee8-3ab6-4cc4-9773-2831b2b6e445" activeEnvironment="Default" name="ProductImp?wsdl" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="78078b4b-7032-429c-bd70-5948dfc7693b" wsaVersion="NONE" name="ProductImpSoapBinding" type="wsdl" bindingName="{http://core.wsdl.exemple.com}ProductImpSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/WebServiceSOAP/services/ProductImp?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/WebServiceSOAP/services/ProductImp?wsdl"><con:part><con:url>http://localhost:8080/WebServiceSOAP/services/ProductImp?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://core.wsdl.exemple.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://core.wsdl.exemple.com" xmlns:intf="http://core.wsdl.exemple.com" xmlns:tns1="http://domain.exemple.com" xmlns:tns2="http://domain.core.wsdl.exemple.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://core.wsdl.exemple.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://domain.core.wsdl.exemple.com"/>
+      <import namespace="http://domain.exemple.com"/>
+      <element name="getProducts">
+        <complexType/>
+      </element>
+      <element name="getProductsResponse">
+        <complexType>
+          <sequence>
+            <element maxOccurs="unbounded" name="getProductsReturn" type="tns1:Product"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getProduct">
+        <complexType>
+          <sequence>
+            <element name="id" type="xsd:long"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getProductResponse">
+        <complexType>
+          <sequence>
+            <element name="getProductReturn" type="tns1:Product"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="removeProduct">
+        <complexType>
+          <sequence>
+            <element name="id" type="xsd:long"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="removeProductResponse">
+        <complexType>
+          <sequence>
+            <element name="removeProductReturn" type="xsd:boolean"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="addProduct">
+        <complexType>
+          <sequence>
+            <element name="productInput" type="tns2:ProductInput"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="addProductResponse">
+        <complexType>
+          <sequence>
+            <element name="addProductReturn" type="tns1:Product"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="updateProduct">
+        <complexType>
+          <sequence>
+            <element name="product" type="tns1:Product"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="updateProductResponse">
+        <complexType>
+          <sequence>
+            <element name="updateProductReturn" type="tns1:Product"/>
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://domain.exemple.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://domain.core.wsdl.exemple.com"/>
+      <complexType name="Product">
+        <sequence>
+          <element name="dateCreated" nillable="true" type="xsd:string"/>
+          <element name="dateUpdate" nillable="true" type="xsd:string"/>
+          <element name="description" nillable="true" type="xsd:string"/>
+          <element name="id" type="xsd:long"/>
+          <element name="name" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://domain.core.wsdl.exemple.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://domain.exemple.com"/>
+      <complexType name="ProductInput">
+        <sequence>
+          <element name="description" nillable="true" type="xsd:string"/>
+          <element name="name" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="getProductsRequest">
+    <wsdl:part element="impl:getProducts" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeProductRequest">
+    <wsdl:part element="impl:removeProduct" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProductResponse">
+    <wsdl:part element="impl:getProductResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateProductResponse">
+    <wsdl:part element="impl:updateProductResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateProductRequest">
+    <wsdl:part element="impl:updateProduct" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addProductRequest">
+    <wsdl:part element="impl:addProduct" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProductsResponse">
+    <wsdl:part element="impl:getProductsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProductRequest">
+    <wsdl:part element="impl:getProduct" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeProductResponse">
+    <wsdl:part element="impl:removeProductResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addProductResponse">
+    <wsdl:part element="impl:addProductResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ProductImp">
+    <wsdl:operation name="getProducts">
+      <wsdl:input message="impl:getProductsRequest" name="getProductsRequest"></wsdl:input>
+      <wsdl:output message="impl:getProductsResponse" name="getProductsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProduct">
+      <wsdl:input message="impl:getProductRequest" name="getProductRequest"></wsdl:input>
+      <wsdl:output message="impl:getProductResponse" name="getProductResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeProduct">
+      <wsdl:input message="impl:removeProductRequest" name="removeProductRequest"></wsdl:input>
+      <wsdl:output message="impl:removeProductResponse" name="removeProductResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addProduct">
+      <wsdl:input message="impl:addProductRequest" name="addProductRequest"></wsdl:input>
+      <wsdl:output message="impl:addProductResponse" name="addProductResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProduct">
+      <wsdl:input message="impl:updateProductRequest" name="updateProductRequest"></wsdl:input>
+      <wsdl:output message="impl:updateProductResponse" name="updateProductResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductImpSoapBinding" type="impl:ProductImp">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getProducts">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getProductsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProductsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProduct">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getProductRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProductResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeProduct">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="removeProductRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeProductResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addProduct">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="addProductRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addProductResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateProduct">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="updateProductRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateProductResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductImpService">
+    <wsdl:port binding="impl:ProductImpSoapBinding" name="ProductImp">
+      <wsdlsoap:address location="http://localhost:8080/WebServiceSOAP/services/ProductImp"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/WebServiceSOAP/services/ProductImp</con:endpoint></con:endpoints><con:operation id="f24304fc-c2ca-4def-bd3c-7f78ebecec5a" isOneWay="false" action="" name="addProduct" bindingOperationName="addProduct" type="Request-Response" outputName="addProductResponse" inputName="addProductRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a8d32d76-2020-4dec-a741-1f37849afb38" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/WebServiceSOAP/services/ProductImp</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:core="http://core.wsdl.exemple.com" xmlns:dom="http://domain.core.wsdl.exemple.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <core:addProduct>\r
+         <core:productInput>\r
+            <dom:description>ASUS · ASUS ROG · Windows · 15,6 polegadas · HD de 1 TB · SSD · Gamer · 16 GB de RAM · Processador de 2,6 GHz · Intel Depois de redefinir a categoria de notebooks gamer ultrafinos, a ROG apresenta a nova geração do Zephyrus, com design ainda mais fino, com apenas 15.3 mm na parte mais fina, mesmo tendo a poderosa placa gráfica GeForce RTX 2080 Max-Q e o mais recente processador Intel Core i7. As molduras superfinas da Tela NanoEdge de 240Hz com com validação Pantone ajudam você a mergulhar nos jogos. Sem comprometer o desempenho das maratonas de jogos, o inovador Sistema Aerodinâmico Ativo ajuda a aumentar o fluxo de ar em 22%. Notebook gamer ganhou outro significado após o mundo conhecer o Zephyrus. Agora a ROG apresenta a nova geração, com design ainda mais fino, com 15,3~16,1 mm de espessura, trazendo o poder do processador gráfico GeForce RTX 2080 Max-Q e o mais recente processador Intel Core i7, graças ao incrível sistema AAS de resfriamento. Outro fator importante para as dimensões enxutas do Zephyrus S é são as molduras superfinas da Tela NanoEdge. As molduras superfinas ajudam você a mergulhar nas ações na tela de 240Hz. Essa incrível taxa de atualização rápida torna a jogabilidade incrivelmente suave, com mínimo input lag, enquanto o tempo de resposta de 3ms de grey-to-grey produz efeitos visuais mais nítidos. O monitor HDR também prolonga a vida útil da bateria com as tecnologias Switch Auto Refresh e Static Display Refresh Switch que reduzem o consumo de energia ativo em até 13%. E cores precisas são fundamentais para artistas, designers e outros criadores de conteúdo que trabalham e jogam na mesma máquina. É por isso que a tela é cuidadosamente calibrada na fábrica. Por isso a tecnologia ProArt TruColor garante aos rigorosos requisitos de validação Pantone para precisão de cores </dom:description>\r
+            <dom:name>Notebook Asus,Intel®Core™ i7-9750H,16GB,1TB SSD, 15,6'', NVIDIA GeForce RTX2080 MAXQ 8GB,ROG Zephyrus -GX531GXR-AZ064T</dom:name>\r
+         </core:productInput>\r
+      </core:addProduct>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://core.wsdl.exemple.com/ProductImp/addProductRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d1ed94ba-934b-4552-ba62-a883d5c1b03a" isOneWay="false" action="" name="getProduct" bindingOperationName="getProduct" type="Request-Response" outputName="getProductResponse" inputName="getProductRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8c4185ad-0b9b-4c25-87b3-8e4e342e5117" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/WebServiceSOAP/services/ProductImp</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:core="http://core.wsdl.exemple.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <core:getProduct>\r
+         <core:id>1</core:id>\r
+      </core:getProduct>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://core.wsdl.exemple.com/ProductImp/getProductRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="286e7fe5-f67d-445e-9f78-db0e9068fe23" isOneWay="false" action="" name="getProducts" bindingOperationName="getProducts" type="Request-Response" outputName="getProductsResponse" inputName="getProductsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e3e737e5-37ca-4b0d-9f5f-1019c3c14a48" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/WebServiceSOAP/services/ProductImp</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:core="http://core.wsdl.exemple.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <core:getProducts/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://core.wsdl.exemple.com/ProductImp/getProductsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a80cb959-23b1-442f-a862-09a055d8da54" isOneWay="false" action="" name="removeProduct" bindingOperationName="removeProduct" type="Request-Response" outputName="removeProductResponse" inputName="removeProductRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8cbea12f-733a-466a-98c7-bdf3e3cd9672" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/WebServiceSOAP/services/ProductImp</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:core="http://core.wsdl.exemple.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <core:removeProduct>\r
+         <core:id>2</core:id>\r
+      </core:removeProduct>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://core.wsdl.exemple.com/ProductImp/removeProductRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8342136f-914a-4618-a4e8-bbdeefb66996" isOneWay="false" action="" name="updateProduct" bindingOperationName="updateProduct" type="Request-Response" outputName="updateProductResponse" inputName="updateProductRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d734efd1-785b-4d05-a473-3b5c9cabd7a7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/WebServiceSOAP/services/ProductImp</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:core="http://core.wsdl.exemple.com" xmlns:dom="http://domain.exemple.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <core:updateProduct>\r
+         <core:product>\r
+            <dom:dateCreated>?</dom:dateCreated>\r
+            <dom:dateUpdate>?</dom:dateUpdate>\r
+            <dom:description>?</dom:description>\r
+            <dom:id>?</dom:id>\r
+            <dom:name>?</dom:name>\r
+         </core:product>\r
+      </core:updateProduct>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://core.wsdl.exemple.com/ProductImp/updateProductRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
